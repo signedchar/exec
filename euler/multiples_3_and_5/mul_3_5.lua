@@ -34,11 +34,28 @@ function filter(pred, list_of_elems)
    return values
 end
 
-function sum_m_53(list_of_numbers)
+function range(start, stop)
+   if start >= stop then
+      return {0}
+   end
+
+   if start < 0 then
+      start = 0
+   end
+   
+   temp = {}
+   for i = start, stop do
+      temp[i] = i
+   end
+   return temp
+end
+
+function sum53(start, stop)
    local cont = 0
-   local len = #list_of_numbers
-   local list_filtered = filter(divisible, list_of_numbers)
-   for i = 1, len do
+   local base_list = range(start, stop)
+   local list_filtered = filter(divisible, base_list)
+
+   for i = start, stop do
       if list_filtered[i] == nil then
 	 cont = 0 + cont
       else
@@ -47,3 +64,4 @@ function sum_m_53(list_of_numbers)
    end
    return cont
 end
+
