@@ -1,6 +1,6 @@
 (defun divisible (number)
   "Number is divisible for 3 or 5?"
-  (if (or (equal 0 (mod number 3)) (equal 0 (mod number 5)))
+  (if (or (zerop (mod number 3)) (zerop (mod number 5)))
       t
       nil))
 
@@ -13,5 +13,3 @@
 (defun sum53 (start stop)
   "Summatory of the multiples of 3 and 5 between `start' to `stop'."
   (apply #'+ (remove-if-not #'divisible (range-below start stop))))
-    
-    
