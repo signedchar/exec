@@ -10,17 +10,18 @@
      (defun ,counter-name ()
        (setf num (+ num 1)))))
 
-(defmacro base-equal 
+(defmacro up-low-case (action (upcase-dna lowcase-dna))
+  `(or (equal ,action ,upcase-dna) (equal ,action ,lowcase-dna)))
 
 (defun count-base (lst-dna)
   (if (equal nil lst-dna)
       (progn
 	nil
 	(list (aa) (tt) (gg) (cc)))
-      (cond ((equal (car lst-dna) #\A) (aa) (count-base (cdr lst-dna)))
-	    ((equal (car lst-dna) #\T) (tt) (count-base (cdr lst-dna)))
-	    ((equal (car lst-dna) #\G) (gg) (count-base (cdr lst-dna)))
-	    ((equal (car lst-dna) #\C) (cc) (count-base (cdr lst-dna))))))
+      (cond ((up-low-case (car lst-dna) (#\A #\a)) (aa) (count-base (cdr lst-dna)))
+	    ((up-low-case (car lst-dna) (#\T #\t)) (tt) (count-base (cdr lst-dna)))
+	    ((up-low-case (car lst-dna) (#\G #\g)) (gg) (count-base (cdr lst-dna)))
+	    ((up-low-case (car lst-dna) (#\C #\c)) (cc) (count-base (cdr lst-dna))))))
 
 (defun counter-dna (dna-string)
   (let ((bases (get-base dna-string)))
@@ -29,4 +30,5 @@
     (counter-gen gg)
     (counter-gen cc)
     (let ((count (count-base bases)))
-      (format t "~A~%" count))))
+      (format t "Adenine: ~A Thymine: ~A Guanine: ~A Cytosine: ~A~%"
+	      (first count) (second count) (third count) (fourth count)))))
