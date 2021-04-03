@@ -16,6 +16,10 @@ for this source, read a fasta file."
   (let ((fasta-lst (read-fasta-to-lst fasta)))
     (list (car fasta-lst) (one-line (cdr fasta-lst)))))
 
+(defun fasta-dna (fasta)
+  "Return only the DNA sequence."
+  (cadr (fasta-info fasta)))
+
 (defun dna-to-bases (dna &optional (start 0))
   "Transforming DNA string to letters (bases)"
   (let ((lng-dna (length dna)))
@@ -63,4 +67,3 @@ for this source, read a fasta file."
 	     (gc (gc-calculus gc-count leng-dna-string)))
 	(format t "Guanine and Cytosine count: ~A~% Total dna length: ~A~% GC calculus: ~A~%"
 		gc-count leng-dna-string gc)))))
-
