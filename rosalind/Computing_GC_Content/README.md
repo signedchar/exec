@@ -48,5 +48,8 @@ The mathematical field of numerical analysis is devoted to rigorously studying t
 
 ```lisp
 > (load "gc_dna.lisp")
-> (counter-gc (fasta-dna "sequence.fasta"))
+> (counter-gc (fasta-dna "Rosalind_0808.fasta"))
+ Guanine and Cytosine count: 53
+ Total dna length: 87
+ GC calculus: 60.91954
 ```
