@@ -1,4 +1,4 @@
-# DNA complement
+# DNA reverse complement
 
 ## Problem
 
